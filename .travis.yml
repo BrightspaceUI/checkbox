@@ -1,0 +1,11 @@
+language: node_js
+node_js: node
+script:
+- npm run lint
+- polymer test --skip-plugin local
+addons:
+  jwt:
+    secure: oT3rf44eeH2zF1JUeYoSsPQx1Sd8MeFbC0XZhLL0oLgrmN1G3jmO/dvN68DfAKuqxRi+QZSqOnpKTmEoag6LOV3U+4vl2/WJj1hyVb5UWEjrAVmDArmryHeIfobJZM86kg1g88zHtAJ16JKoSXbeNy/zQUlXvNijLXIBtbIT4z5TymCJY3qkShhuABYwktCFqoluJGkekuLIhD44WWMILrH5U4J/beS8PjKlWovvDk3Osz9yIzBDf2sADLZ5PuSwmTDOm60F8+faO9kFPD7LA64gu3OjdNYxK9cyyA46jcNdchJld+ZzxfH2qsX9bigB1ic+IglQYxNJxeq1adVjbTbipMD9D7WUGxt9o7WChzIK2ENua710o+f6hU17AGDtynLN9L3Q0GxTHePKtE7Q83We1sScDlgaMyOseiYlVp5WQHdlbk/C7452K5oMtjjZYKVTllthakzZ1B2zJst8UfNhljTtdfk0WTdluXUt54LtSelTDQ5TRMBwcFcn2liqWD+4u3sH2wKpVx19ro2Vwl9Tnh8WS3YBRHL8qST3Bit9IUWIBuz02LmVACc8JtYxmDfbey316y3L+JpIvZzrq9mDJHu9vPfpILPIVfbGui1A7wgWzpfS/5bGcPaj8AgbLRCdBiMto7crcPj2KJ9VgozTQn49stnD85/p/D52P/k=
+env:
+  global:
+    SAUCE_USERNAME: Desire2Learn

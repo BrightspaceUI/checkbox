@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+		<title>d2l-checkbox demo</title>
+		<script src="../../webcomponentsjs/webcomponents-lite.js"></script>
+		<link rel="import" href="../../iron-demo-helpers/demo-pages-shared-styles.html">
+		<link rel="import" href="../../iron-demo-helpers/demo-snippet.html">
+		<link rel="import" href="../d2l-checkbox.html">
+		<custom-style>
+			<style is="custom-style" include="demo-pages-shared-styles"></style>
+		</custom-style>
+	</head>
+	<body unresolved>
+		<div class="vertical-section-container centered">
+			<h3>Simple checkbox with label</h3>
+			<demo-snippet>
+				<template>
+					<d2l-checkbox checked>Label for checkbox</d2l-checkbox>
+				</template>
+			</demo-snippet>
+
+			<h3>Checkbox with multi-line label</h3>
+			<demo-snippet>
+				<template>
+					<d2l-checkbox style="width:200px;">
+						Label for checkbox that wraps nicely onto
+						multiple lines and stays aligned
+					</d2l-checkbox>
+				</template>
+			</demo-snippet>
+
+			<h3>Checkbox with hidden label</h3>
+			<demo-snippet>
+				<template>
+					<d2l-checkbox aria-label="Label for checkbox"></d2l-checkbox>
+				</template>
+			</demo-snippet>
+
+			<h3>Disabled checkbox</h3>
+			<demo-snippet>
+				<template>
+					<d2l-checkbox checked disabled>Disabled checkbox</d2l-checkbox>
+				</template>
+			</demo-snippet>
+
+			<h3>Checkbox with label and secondary content</h3>
+			<demo-snippet>
+				<template>
+					<d2l-checkbox>
+						Label for checkbox
+						<p slot="secondary" style="color:#999999;">
+							Additional content can go here and will
+							also line up nicely with the checkbox.
+						</p>
+					</d2l-checkbox>
+				</template>
+			</demo-snippet>
+		</div>
+	</body>
+</html>

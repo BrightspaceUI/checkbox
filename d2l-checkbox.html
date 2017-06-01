@@ -1,0 +1,182 @@
+<link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="../d2l-colors/d2l-colors.html">
+<!--
+`d2l-checkbox`
+Polymer-based web component for D2L checkboxes
+
+@demo demo/index.html
+-->
+
+<dom-module id="d2l-checkbox">
+	<template strip-whitespace>
+		<style>
+
+			:host {
+				display: inline-block;
+				padding-left: 1.7rem;
+			}
+			:host-context([dir="rtl"]) {
+				padding-right: 1.7rem;
+				padding-left: 0;
+			}
+			:host([aria-label]) {
+				padding-left: 1.2rem;
+			}
+			:host-context([dir="rtl"]) :host([aria-label]) {
+				padding-right: 1.2rem;
+				padding-left: 0;
+			}
+
+			label {
+				display: inline-block;
+				margin-left: -1.7rem;
+				white-space: nowrap;
+			}
+			:host-context([dir="rtl"]) label {
+				margin-right: -1.7rem;
+				margin-left: 0;
+			}
+			:host([aria-label]) label {
+				margin-left: -1.2rem;
+			}
+			:host-context([dir="rtl"][aria-label]) label {
+				margin-right: -1.2rem;
+				margin-left: 0;
+			}
+
+			.d2l-checkbox-label {
+				display: inline-block;
+				margin-left: 0.5rem;
+				vertical-align: middle;
+				white-space: normal;
+			}
+			:host-context([dir="rtl"]) .d2l-checkbox-label {
+				margin-right: 0.5rem;
+				margin-left: 0;
+			}
+			:host([aria-label]) .d2l-checkbox-label,
+			:host-context([dir="rtl"][aria-label]) .d2l-checkbox-label {
+				margin-left: 0;
+				margin-right: 0;
+			}
+
+			input[type="checkbox"] {
+				-webkit-appearance: none;
+				-moz-appearance: none;
+				appearance: none;
+				background-position: center center;
+				background-repeat: no-repeat;
+				background-size: 1.1rem 1.1rem;
+				border-radius: 0.3rem;
+				border-style: solid;
+				box-sizing: border-box;
+				display: inline-block;
+				height: 1.2rem;
+				margin: 0;
+				padding: 0;
+				transition-duration: 0.5s;
+				transition-timing-function: ease;
+				transition-property: background-color, border-color;
+				vertical-align: middle;
+				width: 1.2rem;
+			}
+			input[type="checkbox"]:checked {
+				background-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2224%22%20height%3D%2224%22%20viewBox%3D%220%200%2024%2024%22%3E%3Cpath%20fill%3D%22%23565A5C%22%20fill-rule%3D%22evenodd%22%20d%3D%22M20.76%206.324L12.28%2019.29l-.02.03c-.29.44-.77.68-1.26.68-.27%200-.54-.07-.79-.22l-6.5-3.998c-.7-.44-.92-1.36-.49-2.07.44-.7%201.36-.92%202.07-.49l5.25%203.23%207.7-11.77c.46-.7%201.39-.89%202.08-.44.69.462.89%201.392.44%202.082z%22%2F%3E%3C%2Fsvg%3E");
+			}
+			input[type="checkbox"],
+			input[type="checkbox"]:hover:disabled {
+				background-color: var(--d2l-color-woolonardo);
+				border-color: var(--d2l-color-titanius);
+				border-width: 1px;
+			}
+			input[type="checkbox"]:hover,
+			input[type="checkbox"]:focus,
+			input[type="checkbox"].d2l-checkbox-focus {
+				background-color: var(--d2l-color-gypsum);
+				border-color: var(--d2l-color-celestine);
+				border-width: 2px;
+				outline-width: 0;
+			}
+			input[type="checkbox"][aria-invalid="true"] {
+				border-color: var(--d2l-color-cinnabar);
+			}
+
+			input[type="checkbox"]:disabled,
+			:host([disabled]) .d2l-checkbox-label {
+				opacity: 0.5;
+			}
+			/* Firefox only, fixed in Firefox 54 */
+			/* https://bugzilla.mozilla.org/show_bug.cgi?id=605985 */
+			@-moz-document url-prefix() {
+				input[type="checkbox"] {
+					-moz-appearance: checkbox;
+				}
+			}
+		</style>
+		<label>
+			<input
+				type="checkbox"
+				aria-label$="[[ariaLabel]]"
+				aria-labelledby$="[[ariaLabelledby]]"
+				checked="{{checked::change}}"
+				disabled$="[[disabled]]"
+				on-change="_handleChange" />
+			<span class="d2l-checkbox-label"><slot></slot></span>
+		</label>
+		<slot name="secondary"></slot>
+	</template>
+	<script>
+		Polymer({
+			is: 'd2l-checkbox',
+			properties: {
+				/**
+				 * Fired when the checked state changes due to user interaction.
+				 *
+				 * @event change
+				*/
+
+				/**
+				 * Gets or sets the [aria-label](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Techniques/Using_the_aria-label_attribute)
+				 * attribute, which defines a string label for the checkbox. Must be used when
+				 * an explicit label (through child elements) isn't provided.
+				 */
+				ariaLabel: {
+					type: String
+				},
+				/**
+				 * Gets or sets the [aria-labelledby attribute](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Techniques/Using_the_aria-labelledby_attribute),
+				 * which contains the IDs of labels for the checkbox.
+				 */
+				ariaLabelledby: {
+					type: String
+				},
+				/**
+				 * Gets or sets the state of the checkbox, `true` is checked and `false` is unchecked.
+				 */
+				checked: {
+					type: Boolean,
+					reflectToAttribute: true,
+					value: false
+				},
+				/**
+				 * Gets or sets the disabled state of the checkbox, `true` is disabled and `false` is enabled.
+				 */
+				disabled: {
+					type: Boolean,
+					reflectToAttribute: true,
+					value: false
+				}
+			},
+			_handleChange: function() {
+				// in shady DOM the input's "change" event will leak through,
+				// so no need to fire it
+				if (Polymer.Element || Polymer.Settings.useNativeShadow) {
+					this.dispatchEvent( new CustomEvent(
+							'change',
+							{bubbles: true, composed: false}
+						) );
+				}
+			}
+		});
+	</script>
+</dom-module>
