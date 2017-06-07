@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+		<title>d2l-checkbox test</title>
+		<script src="../../webcomponentsjs/webcomponents-lite.js"></script>
+		<script src="../../web-component-tester/browser.js"></script>
+		<link rel="import" href="../d2l-checkbox.html">
+	</head>
+	<body>
+		<test-fixture id="basic">
+			<template>
+				<d2l-checkbox label="basic"></d2l-checkbox>
+			</template>
+		</test-fixture>
+		<test-fixture id="basic-checked">
+			<template>
+				<d2l-checkbox checked label="checked"></d2l-checkbox>
+			</template>
+		</test-fixture>
+		<test-fixture id="basic-disabled">
+			<template>
+				<d2l-checkbox disabled label="disabled"></d2l-checkbox>
+			</template>
+		</test-fixture>
+		<script>
+			describe('d2l-checkbox', function() {
+
+				var elem;
+
+				describe('basic', function() {
+
+					it('should instantiate the element', function() {
+						elem = fixture('basic');
+						expect(elem.is).to.equal('d2l-checkbox');
+					});
+
+				});
+
+				describe('checked', function() {
+
+					describe('checked-false', function() {
+
+						beforeEach(function() {
+							elem = fixture('basic');
+						});
+
+						it('should default "checked" to false', function() {
+							expect(elem.checked).to.be.false;
+							expect(elem.hasAttribute('checked')).to.be.false;
+							expect(elem.$$('input').checked).to.be.false;
+						});
+
+						it('should reflect "checked" property change to attribute and input', function() {
+							elem.checked = true;
+							expect(elem.hasAttribute('checked')).to.be.true;
+							expect(elem.$$('input').checked).to.be.true;
+						});
+
+						it('should reflect "checked" attribute change to property and input', function() {
+							elem.setAttribute('checked', 'checked');
+							expect(elem.checked).to.be.true;
+							expect(elem.$$('input').checked).to.be.true;
+						});
+
+						it('should reflect input "checked" change to attribute and property', function() {
+							elem.$$('input').click();
+							expect(elem.checked).to.be.true;
+							expect(elem.hasAttribute('checked')).to.be.true;
+						});
+
+					});
+
+					describe('checked-true', function() {
+
+						beforeEach(function() {
+							elem = fixture('basic-checked');
+						});
+
+						it('should default "checked" to true', function() {
+							expect(elem.checked).to.be.true;
+							expect(elem.hasAttribute('checked')).to.be.true;
+							expect(elem.$$('input').checked).to.be.true;
+						});
+
+						it('should reflect "checked" property change to attribute and input', function() {
+							elem.checked = false;
+							expect(elem.hasAttribute('checked')).to.be.false;
+							expect(elem.$$('input').checked).to.be.false;
+						});
+
+						it('should reflect "checked" attribute change to property and input', function() {
+							elem.removeAttribute('checked');
+							expect(elem.checked).to.be.false;
+							expect(elem.$$('input').checked).to.be.false;
+						});
+
+						it('should reflect input "checked" change to attribute and property', function() {
+							elem.$$('input').click();
+							expect(elem.checked).to.be.false;
+							expect(elem.hasAttribute('checked')).to.be.false;
+						});
+
+					});
+
+					describe('checked-change-event', function() {
+
+						beforeEach(function() {
+							elem = fixture('basic');
+						});
+
+						it('should fire change event when input element is clicked', function(done) {
+							var input = elem.$$('input');
+							elem.addEventListener('change', function(e) {
+								if ( Polymer.Element || Polymer.Settings.useNativeShadow) {
+									expect(e.target).to.equal(elem);
+								} else {
+									expect(e.target).to.equal(input);
+								}
+								done();
+							});
+							input.click();
+						});
+
+					});
+
+				});
+
+				describe('disabled', function() {
+
+					describe('disabled-false', function() {
+
+						beforeEach(function() {
+							elem = fixture('basic');
+						});
+
+						it('should default "disabled" to false', function() {
+							expect(elem.disabled).to.be.false;
+							expect(elem.hasAttribute('disabled')).to.be.false;
+							expect(elem.$$('input').disabled).to.be.false;
+						});
+
+						it('should reflect "disabled" property change to attribute and input', function() {
+							elem.disabled = true;
+							expect(elem.hasAttribute('disabled')).to.be.true;
+							expect(elem.$$('input').disabled).to.be.true;
+						});
+
+						it('should reflect "disabled" attribute change to property and input', function() {
+							elem.setAttribute('disabled', 'disabled');
+							expect(elem.disabled).to.be.true;
+							expect(elem.$$('input').disabled).to.be.true;
+						});
+
+					});
+
+					describe('disabled-true', function() {
+
+						beforeEach(function() {
+							elem = fixture('basic-disabled');
+						});
+
+						it('should default "disabled" to true', function() {
+							expect(elem.disabled).to.be.true;
+							expect(elem.$$('input').disabled).to.be.true;
+							expect(elem.hasAttribute('disabled')).to.be.true;
+						});
+
+						it('should reflect "disabled" property change to attribute and input', function() {
+							elem.disabled = false;
+							expect(elem.hasAttribute('disabled')).to.be.false;
+							expect(elem.$$('input').disabled).to.be.false;
+						});
+
+						it('should reflect "disabled" attribute change to property and input', function() {
+							elem.removeAttribute('disabled');
+							expect(elem.disabled).to.be.false;
+							expect(elem.$$('input').disabled).to.be.false;
+						});
+
+					});
+
+				});
+
+			});
+		</script>
+	</body>
+</html>
