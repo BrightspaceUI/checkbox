@@ -6,6 +6,7 @@
 		<title>d2l-checkbox test</title>
 		<script src="../../webcomponentsjs/webcomponents-lite.js"></script>
 		<script src="../../web-component-tester/browser.js"></script>
+		<link rel="import" href="../../iron-test-helpers/mock-interactions.html">
 		<link rel="import" href="../d2l-checkbox.html">
 	</head>
 	<body>
@@ -115,17 +116,17 @@
 							elem = fixture('basic');
 						});
 
-						it('should fire change event when input element is clicked', function(done) {
+						it('should fire "change" event when input element is clicked', function(done) {
 							var input = elem.$$('input');
 							elem.addEventListener('change', function(e) {
-								if ( Polymer.Element || Polymer.Settings.useNativeShadow) {
+								if ( Polymer.Element || Polymer.Settings.useShadow) {
 									expect(e.target).to.equal(elem);
 								} else {
 									expect(e.target).to.equal(input);
 								}
 								done();
 							});
-							input.click();
+							MockInteractions.tap(input);
 						});
 
 					});
@@ -296,6 +297,30 @@
 							expect(elem.$$('input').name).to.equal('new name');
 						});
 
+					});
+
+				});
+
+				describe('focus management', function() {
+
+					beforeEach(function() {
+						elem = fixture('basic');
+					});
+
+					it('should fire "focus" event when input element is focussed', function(done) {
+						elem.addEventListener('focus', function(e) {
+							expect(e.target).to.equal(elem);
+							done();
+						});
+						MockInteractions.focus(elem.$$('input'));
+					});
+
+					it('should fire "focus" event when custom element is focussed', function(done) {
+						elem.addEventListener('focus', function(e) {
+							expect(e.target).to.equal(elem);
+							done();
+						});
+						MockInteractions.focus(elem);
 					});
 
 				});
