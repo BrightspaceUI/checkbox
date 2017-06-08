@@ -120,7 +120,9 @@ Polymer-based web component for D2L checkboxes
 				aria-labelledby$="[[ariaLabelledby]]"
 				checked="{{checked::change}}"
 				disabled$="[[disabled]]"
-				on-change="_handleChange" />
+				name$="[[name]]"
+				on-change="_handleChange"
+				value$="[[value]]" />
 			<span class="d2l-checkbox-label"><slot></slot></span>
 		</label>
 		<slot name="secondary"></slot>
@@ -165,6 +167,22 @@ Polymer-based web component for D2L checkboxes
 					type: Boolean,
 					reflectToAttribute: true,
 					value: false
+				},
+				/**
+				 * Gets or sets the checkbox name, "" by default.
+				 */
+				name: {
+					type: String,
+					reflectToAttribute: true,
+					value: ''
+				},
+				/**
+				 * Gets or sets the checkbox value that gets submitted in forms, "on" by default.
+				 */
+				value: {
+					type: String,
+					reflectToAttribute: true,
+					value: 'on'
 				}
 			},
 			_handleChange: function() {
