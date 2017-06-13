@@ -8,6 +8,7 @@
 		<link rel="import" href="../../iron-demo-helpers/demo-pages-shared-styles.html">
 		<link rel="import" href="../../iron-demo-helpers/demo-snippet.html">
 		<link rel="import" href="../d2l-checkbox.html">
+		<link rel="import" href="../d2l-checkbox-spacer.html">
 		<custom-style>
 			<style is="custom-style" include="demo-pages-shared-styles"></style>
 		</custom-style>
@@ -48,13 +49,13 @@
 			<h3>Checkbox with label and secondary content</h3>
 			<demo-snippet>
 				<template>
-					<d2l-checkbox>
-						Label for checkbox
-						<p slot="secondary" style="color:#999999;">
-							Additional content can go here and will
+					<d2l-checkbox>Label for checkbox</d2l-checkbox>
+					<d2l-checkbox-spacer>
+						<p style="color:#999999;">
+							Additional content can go here and will<br>
 							also line up nicely with the checkbox.
 						</p>
-					</d2l-checkbox>
+					</d2l-checkbox-spacer>
 				</template>
 			</demo-snippet>
 		</div>

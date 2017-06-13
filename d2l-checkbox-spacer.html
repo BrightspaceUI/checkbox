@@ -1,0 +1,28 @@
+<link rel="import" href="../polymer/polymer.html">
+<!--
+`d2l-checkbox-spacer`
+Spacer to align secondary content with checkboxes
+
+@demo demo/index.html
+-->
+
+<dom-module id="d2l-checkbox-spacer">
+	<template strip-whitespace>
+		<style>
+			:host {
+				display: block;
+				padding-left: 1.7rem;
+			}
+			:host-context([dir="rtl"]) {
+				padding-right: 1.7rem;
+				padding-left: 0;
+			}
+		</style>
+		<slot></slot>
+	</template>
+	<script>
+		Polymer({
+			is: 'd2l-checkbox-spacer'
+		});
+	</script>
+</dom-module>
