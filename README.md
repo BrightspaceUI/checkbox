@@ -2,7 +2,7 @@
 [![Bower version][bower-image]][bower-url]
 [![Build status][ci-image]][ci-url]
 
-[Polymer](https://www.polymer-project.org)-based web component and [Sass](http://sass-lang.com/) mixins for D2L checkboxes.
+[Polymer](https://www.polymer-project.org)-based web component for D2L checkboxes.
 
 ![screenshot of checkbox component](/checkbox.gif?raw=true)
 
