@@ -1,5 +1,6 @@
 <link rel="import" href="../polymer/polymer.html">
 <link rel="import" href="../d2l-colors/d2l-colors.html">
+<link rel="import" href="../d2l-typography/d2l-typography-shared-styles.html">
 <!--
 `d2l-checkbox`
 Polymer-based web component for D2L checkboxes
@@ -12,7 +13,12 @@ Polymer-based web component for D2L checkboxes
 		<style>
 
 			:host {
+				display: block;
+				margin-bottom: 0.9rem;
+			}
+			:host([aria-label]) {
 				display: inline-block;
+				margin-bottom: 0;
 			}
 
 			label {
@@ -21,6 +27,8 @@ Polymer-based web component for D2L checkboxes
 			}
 
 			.d2l-checkbox-label {
+				@apply --d2l-body-compact-text;
+				color: var(--d2l-color-ferrite);
 				display: inline-block;
 				margin-left: 0.5rem;
 				vertical-align: middle;
@@ -61,14 +69,13 @@ Polymer-based web component for D2L checkboxes
 			}
 			input[type="checkbox"],
 			input[type="checkbox"]:hover:disabled {
-				background-color: var(--d2l-color-woolonardo);
+				background-color: var(--d2l-color-regolith);
 				border-color: var(--d2l-color-titanius);
 				border-width: 1px;
 			}
 			input[type="checkbox"]:hover,
 			input[type="checkbox"]:focus,
 			input[type="checkbox"].d2l-checkbox-focus {
-				background-color: var(--d2l-color-gypsum);
 				border-color: var(--d2l-color-celestine);
 				border-width: 2px;
 				outline-width: 0;
