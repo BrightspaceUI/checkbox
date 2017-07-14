@@ -22,8 +22,8 @@ Include the [webcomponents.js](http://webcomponents.org/polyfills/) "lite" polyf
 
 ```html
 <head>
-	<script src="../../webcomponentsjs/webcomponents-lite.js"></script>
-	<link rel="import" href="../d2l-checkbox/d2l-checkbox.html">
+	<script src="bower_components/webcomponentsjs/webcomponents-lite.js"></script>
+	<link rel="import" href="bower_components/d2l-checkbox/d2l-checkbox.html">
 </head>
 ```
 
@@ -47,7 +47,41 @@ provide an accessible label:
 <d2l-checkbox aria-label="label for checkbox"></d2l-checkbox>
 ```
 
+## Developing, Testing and Contributing
+
+After cloning the repo, run `npm install` to install dependencies.
+
+If you don't have it already, install the [Polymer CLI](https://www.polymer-project.org/2.0/docs/tools/polymer-cli) globally:
+
+```shell
+npm install -g polymer-cli
+```
+
+To start a [local web server](https://www.polymer-project.org/2.0/docs/tools/polymer-cli-commands#serve) that hosts the demo page and tests:
+
+```shell
+polymer serve
+```
+
+To lint ([eslint](http://eslint.org/) and [Polymer lint](https://www.polymer-project.org/2.0/docs/tools/polymer-cli-commands#lint)):
+
+```shell
+npm run lint
+```
+
+To run unit tests locally using [Polymer test](https://www.polymer-project.org/2.0/docs/tools/polymer-cli-commands#tests):
+
+```shell
+polymer test --skip-plugin sauce
+```
+
+To lint AND run local unit tests:
+
+```shell
+npm test
+```
+
 [bower-url]: http://bower.io/search/?q=d2l-checkbox
 [bower-image]: https://img.shields.io/bower/v/d2l-checkbox.svg
 [ci-url]: https://travis-ci.org/BrightspaceUI/checkbox
-[ci-image]: https://travis-ci.org/BrightspaceUI/checkbox.svg?branch=master
+[ci-image]: https://travis-ci.org/BrightspaceUI/checkbox.svg
