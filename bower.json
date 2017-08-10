@@ -6,7 +6,7 @@
   "ignore": [
     "test",
     ".editorconfig",
-    ".eslintrc",
+    ".eslintrc.json",
     ".gitignore",
     ".travis.yml",
     "package.json",
