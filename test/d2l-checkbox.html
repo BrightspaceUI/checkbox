@@ -129,6 +129,26 @@
 							MockInteractions.tap(input);
 						});
 
+						it('should reflect that a previously unchecked input is now checked', function(done) {
+							var input = elem.$$('input');
+							elem.addEventListener('change', function(e) {
+								expect(e.target.checked).to.equal(true);
+								done();
+							});
+							MockInteractions.tap(input);
+						});
+
+						it('should reflect that a previously checked input is now unchecked', function(done) {
+							elem = fixture('checked');
+							var input = elem.$$('input');
+
+							elem.addEventListener('change', function(e) {
+								expect(e.target.checked).to.equal(false);
+								done();
+							});
+							MockInteractions.tap(input);
+						});
+
 					});
 
 				});
