@@ -101,7 +101,7 @@ Polymer-based web component for D2L checkboxes
 				type="checkbox"
 				aria-label$="[[ariaLabel]]"
 				aria-labelledby$="[[ariaLabelledby]]"
-				checked="{{checked::change}}"
+				checked="{{checked}}"
 				disabled$="[[disabled]]"
 				name$="[[name]]"
 				on-change="_handleChange"
@@ -178,7 +178,9 @@ Polymer-based web component for D2L checkboxes
 			focus: function() {
 				this.$$('input').focus();
 			},
-			_handleChange: function() {
+			_handleChange: function(e) {
+				this.checked = e.target.checked;
+
 				// in shady DOM the input's "change" event will leak through,
 				// so no need to fire it
 				if (Polymer.Element || Polymer.Settings.useShadow) {
