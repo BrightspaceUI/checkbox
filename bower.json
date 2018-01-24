@@ -4,12 +4,14 @@
   "main": "d2l-checkbox.html",
   "license": "Apache-2.0",
   "ignore": [
+    "demo",
     "test",
     ".editorconfig",
     ".eslintrc.json",
     ".gitignore",
     ".travis.yml",
     "package.json",
+    "polymer.json",
     "wct.conf.json"
   ],
   "dependencies": {
