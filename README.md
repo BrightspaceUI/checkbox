@@ -23,14 +23,42 @@ Include the [webcomponents.js](http://webcomponents.org/polyfills/) "lite" polyf
 
 ```html
 <head>
-	<script src="bower_components/webcomponentsjs/webcomponents-lite.js"></script>
-	<link rel="import" href="bower_components/d2l-checkbox/d2l-checkbox.html">
+  <script src="../webcomponentsjs/webcomponents-lite.js"></script>
+  <link rel="import" href="../d2l-checkbox/d2l-checkbox.html">
 </head>
 ```
 
 A `<d2l-checkbox>` custom element can now be used in your application. The label
 for your checkbox should be placed inside the element:
 
+<!---
+```
+<custom-element-demo>
+  <template>
+    <script src="../webcomponentsjs/webcomponents-lite.js"></script>
+    <link rel="import" href="../d2l-typography/d2l-typography.html">
+    <link rel="import" href="d2l-checkbox.html">
+    <custom-style include="d2l-typography">
+      <style is="custom-style" include="d2l-typography"></style>
+    </custom-style>
+    <style>
+      html {
+        font-size: 20px;
+      }
+      body {
+        color: var(--d2l-color-ferrite);
+        font-family: 'Lato', 'Lucida Sans Unicode', 'Lucida Grande', sans-serif;
+        letter-spacing: 0.01rem;
+        font-size: 0.95rem;
+        font-weight: 400;
+        line-height: 1.4rem;
+      }
+    </style>
+    <next-code-block></next-code-block>
+  </template>
+</custom-element-demo>
+```
+-->
 ```html
 <d2l-checkbox>Label for checkbox</d2l-checkbox>
 ```
@@ -46,6 +74,45 @@ provide an accessible label:
 
 ```html
 <d2l-checkbox aria-label="label for checkbox"></d2l-checkbox>
+```
+
+To align following related content below checkboxes, the `d2l-checkbox-spacer` element can be used.
+
+<!---
+```
+<custom-element-demo>
+  <template>
+    <script src="../webcomponentsjs/webcomponents-lite.js"></script>
+    <link rel="import" href="../d2l-typography/d2l-typography.html">
+    <link rel="import" href="d2l-checkbox.html">
+    <link rel="import" href="d2l-checkbox-spacer.html">
+    <custom-style include="d2l-typography">
+      <style is="custom-style" include="d2l-typography"></style>
+    </custom-style>
+    <style>
+      html {
+        font-size: 20px;
+      }
+      body {
+        color: var(--d2l-color-ferrite);
+        font-family: 'Lato', 'Lucida Sans Unicode', 'Lucida Grande', sans-serif;
+        letter-spacing: 0.01rem;
+        font-size: 0.95rem;
+        font-weight: 400;
+        line-height: 1.4rem;
+      }
+    </style>
+    <next-code-block></next-code-block>
+  </template>
+</custom-element-demo>
+```
+-->
+```html
+<d2l-checkbox>Label for checkbox</d2l-checkbox>
+<d2l-checkbox-spacer style="color:#999999;">
+  Additional content can go here and will<br>
+  also line up nicely with the checkbox.
+</d2l-checkbox-spacer>
 ```
 
 ## Developing, Testing and Contributing
