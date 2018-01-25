@@ -119,7 +119,7 @@
 						it('should fire "change" event when input element is clicked', function(done) {
 							var input = elem.$$('input');
 							elem.addEventListener('change', function(e) {
-								if ( Polymer.Element || Polymer.Settings.useShadow) {
+								if (Polymer.Element || Polymer.Settings.useShadow) {
 									expect(e.target).to.equal(elem);
 								} else {
 									expect(e.target).to.equal(input);
