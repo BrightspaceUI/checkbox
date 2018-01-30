@@ -88,13 +88,6 @@ Polymer-based web component for D2L checkboxes
 			:host([disabled]) .d2l-checkbox-label {
 				opacity: 0.5;
 			}
-			/* Firefox only, fixed in Firefox 54 */
-			/* https://bugzilla.mozilla.org/show_bug.cgi?id=605985 */
-			@-moz-document url-prefix() {
-				input[type="checkbox"] {
-					-moz-appearance: checkbox;
-				}
-			}
 		</style>
 		<label>
 			<input
