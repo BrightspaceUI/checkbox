@@ -1,14 +1,14 @@
 {
+  "name": "d2l-checkbox",
   "description": "Polymer-based web component for D2L checkboxes",
+  "scripts": {
+    "lint:js": "eslint . test/** demo/** --ext .js,.html",
+    "lint": "npm run lint:js && polymer lint",
+    "test": "npm run lint && polymer test --skip-plugin sauce"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/BrightspaceUI/checkbox.git"
-  },
-  "name": "d2l-checkbox",
-  "scripts": {
-    "lint:html": "eslint . demo/. test/.",
-    "lint": "npm run lint:html && polymer lint --npm",
-    "test": "npm run lint && polymer test --skip-plugin sauce --npm"
   },
   "author": "D2L Corporation",
   "license": "Apache-2.0",

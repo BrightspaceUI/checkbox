@@ -3,5 +3,6 @@
     "rules": [
       "polymer-3"
     ]
-  }
+  },
+  "npm": true
 }
